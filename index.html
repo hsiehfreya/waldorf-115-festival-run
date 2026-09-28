@@ -34,6 +34,17 @@ tr.go td.t { color:var(--accent); } tr.go td.c { font-weight:700; }
 .bibs { display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin: 10px 0 4px; }
 .bibs figure { margin:0; background:rgba(255,255,255,.75); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
 .bibs img { width:100%; display:block; }
+html { scroll-behavior:smooth; scroll-padding-top:64px; }
+nav.toc { position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+  padding:10px 0; margin:10px -24px 0; background:rgba(250,246,240,.85); backdrop-filter:blur(6px); }
+nav.toc a { text-decoration:none; font-size:15px; font-weight:500; padding:6px 14px; border-radius:999px;
+  border:1px solid var(--line); background:rgba(255,255,255,.78); color:var(--ink); }
+nav.toc a:hover { border-color:var(--primary); color:var(--primary); }
+section { margin:18px 0 26px; }
+h2 { font-family:"Noto Serif TC",serif; color:var(--primary); font-size:22px; margin:0 0 10px;
+  padding-bottom:6px; border-bottom:2px solid var(--line); }
+h2 .no { display:inline-block; width:30px; height:30px; line-height:30px; text-align:center; border-radius:50%;
+  background:var(--primary); color:#fff; font-size:16px; margin-right:8px; vertical-align:3px; font-family:"Noto Sans TC",sans-serif; }
 .park { margin: 14px 0 4px; }
 .park h3 { text-align:center; font-family:"Noto Serif TC",serif; color:var(--primary); font-size:18px; margin:0 0 8px; }
 .park p { font-size:14.5px; line-height:1.5; margin:8px 0 4px; }
@@ -46,10 +57,10 @@ footer { text-align:center; padding:6px 24px 4px; color:var(--primary); }
 footer .org { font-family:"Noto Serif TC",serif; font-size:18px; }
 footer .sub { font-size:12px; letter-spacing:.15em; opacity:.7; margin-top:2px; }
 @media (max-width: 560px) {
-  main { padding:16px 14px 4px; } .hero h1 { font-size:24px; }
+  main { padding:16px 14px 4px; } nav.toc { margin:10px -14px 0; } .hero h1 { font-size:24px; }
   td { font-size:16px; padding:7px 10px; } td.t { width:34%; white-space:normal; }
 }
-@media print { body { background:#FAF6F0; min-height:auto; } main { padding:0 8px; } }
+@media print { body { background:#FAF6F0; min-height:auto; } main { padding:0 8px; } nav.toc { display:none; } #rules, #parking { break-before:page; } }
 @page { margin: 10mm; }
 </style>
 </head>
@@ -62,6 +73,15 @@ footer .sub { font-size:12px; letter-spacing:.15em; opacity:.7; margin-top:2px; 
     <span class="date">115 年 10 月 3 日（六）</span>
   </header>
 
+  <nav class="toc">
+    <a href="#schedule">1 當日時程</a>
+    <a href="#rules">2 規則說明</a>
+    <a href="#parking">3 停車宣導</a>
+  </nav>
+
+  <!-- ========== 1 當日時程 ========== -->
+  <section id="schedule">
+  <h2><span class="no">1</span>當日時程</h2>
   <img class="route-img" src="assets/手繪路線圖.jpg" alt="秋慶路跑官方賽道地圖"/>
 
   <div class="bibs">
@@ -95,13 +115,17 @@ footer .sub { font-size:12px; letter-spacing:.15em; opacity:.7; margin-top:2px; 
     ・路跑起點在小綠門，終點在慈心校門口，歡迎到現場加油。<br/>
     ・路跑當天請自備水杯，現場補給站僅提供少量的公用杯。
   </div>
+  </section>
 
-  <div style="break-before:page; page-break-before:always; padding-top:16px;">
-    <h3 style="text-align:center; font-family:'Noto Serif TC',serif; color:var(--primary); font-size:18px; margin:0 0 10px;">路跑參賽規則</h3>
-    <img src="assets/參賽規則.png" alt="115學年度秋季路跑參賽規則" style="width:100%; border-radius:8px; border:1px solid var(--line);"/>
-  </div>
-  <div class="park">
-    <h3>停車宣導</h3>
+  <!-- ========== 2 規則說明 ========== -->
+  <section id="rules">
+    <h2><span class="no">2</span>規則說明</h2>
+    <a href="assets/參賽規則.png"><img src="assets/參賽規則.png" alt="115學年度秋季路跑參賽規則" style="width:100%; display:block; border-radius:8px; border:1px solid var(--line);"/></a>
+  </section>
+
+  <!-- ========== 3 停車宣導 ========== -->
+  <section id="parking" class="park">
+    <h2><span class="no">3</span>停車宣導</h2>
     <div class="callout" style="border-left-color:var(--accent);">
       因應活動區域調整，<b>小綠門停車場禁止停車</b>；<b>照安路由小綠門至十甲園土地公廟沿線左右兩側禁止停車</b>。家長請至<b>冬山國中</b>停車。
     </div>
@@ -122,7 +146,7 @@ footer .sub { font-size:12px; letter-spacing:.15em; opacity:.7; margin-top:2px; 
       <figure><a href="assets/停車-冬山國中.jpg"><img src="assets/停車-冬山國中.jpg" alt="冬山國中附近停車"/></a><figcaption>冬山國中</figcaption></figure>
     </div>
     <p><b>四、建議：</b>住在學校附近 2 公里以內的家庭，建議走路上學，當作暖身。</p>
-  </div>
+  </section>
 </main>
 <footer>
   <div class="org">慈心華德福高中</div>
